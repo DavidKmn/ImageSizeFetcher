@@ -12,7 +12,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let imageUrl = URL(string: "https://cdn.123movies0.com/images//gomovies-logo-light.png")!
+        let fetcher = ImageSizeFetcher()
+        fetcher.sizeForImage(atURL: imageUrl) { (error, result) in
+            guard let size = result?.size else { return }
+            print("Image size is \(NSCoder.string(for: size))")
+        }
+
     }
 
 
